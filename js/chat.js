@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // =====================================================
 
   const API_URL = window.MEDGUIDE_API_URL
-    || "https://YOUR-RENDER-SERVICE.onrender.com/api/chat";
+    || "http://127.0.0.1:8000/api/chat";
 
   // =====================================================
 
