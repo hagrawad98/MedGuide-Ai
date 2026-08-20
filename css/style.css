@@ -668,6 +668,12 @@ body.dark-mode .back-link {
   animation: toast-in 0.25s ease-out;
 }
 
+.auth-toast a {
+  color: var(--blue);
+  font-weight: 700;
+  text-decoration: underline !important;
+}
+
 @keyframes toast-in {
   from {
     opacity: 0;

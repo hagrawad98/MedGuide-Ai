@@ -64,12 +64,13 @@ authGatedLinks.forEach((link) => {
 
     const message = document.createElement("div");
     message.className = "auth-toast";
-    message.textContent = "Please register or login first to start chatting.";
+    message.innerHTML =
+      'Please register or login first. <a href="./sign-up.html">Go to registration</a>';
     document.body.appendChild(message);
 
     setTimeout(() => {
-      window.location.assign("./sign-up.html");
-    }, 2500);
+      window.location.assign(new URL("./sign-up.html", window.location.href));
+    }, 1200);
   });
 });
 

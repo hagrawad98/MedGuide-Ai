@@ -141,7 +141,10 @@ document.addEventListener("DOMContentLoaded", () => {
         method: "POST",
 
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          ...(localStorage.getItem("access_token")
+            ? { Authorization: `Bearer ${localStorage.getItem("access_token")}` }
+            : {}),
         },
 
         body: JSON.stringify({
@@ -155,6 +158,10 @@ document.addEventListener("DOMContentLoaded", () => {
       // =================================================
 
       if (!response.ok) {
+        if (response.status === 401) {
+          throw new Error("Your login session is not authorized for the chat API.");
+        }
+
         throw new Error(`Server error: ${response.status}`);
       }
 
@@ -199,8 +206,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Show error message
       addMessage(
-        "Sorry, something went wrong while connecting to the AI. Please try again.",
-        "assistant"
+        error.message.includes("not authorized")
+          ? "Your login session is not connected to the chat server. Please log in through the API-enabled login page."
+          : "Sorry, something went wrong while connecting to the AI. Please try again.",
+        "assistant",
       );
 
     } finally {
