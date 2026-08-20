@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -33,6 +34,33 @@ documents = []
 document_pages = []
 vectorizer = None
 tfidf_matrix = None
+MEDICATION_SAFETY_MESSAGE = (
+    "I cannot provide a personal medication dose. "
+    "Please ask a doctor or pharmacist, especially if you have other conditions "
+    "or take other medicines."
+)
+
+
+def needs_medication_safety_response(question):
+    medication_terms = (
+        "paracetamol", "acetaminophen", "ibuprofen", "naproxen", "medicine",
+        "medication", "drug", "tablet", "pill", "painkiller",
+    )
+    dose_terms = (
+        "dose", "dosage", "how much", "how many", "mg", "take", "prescri",
+    )
+    normalized_question = question.lower()
+    return any(term in normalized_question for term in medication_terms) and any(
+        term in normalized_question for term in dose_terms
+    )
+
+
+def concise_excerpt(text, max_sentences=2, max_characters=520):
+    sentences = re.split(r"(?<=[.!?])\s+", text)
+    excerpt = " ".join(sentences[:max_sentences]).strip()
+    if len(excerpt) > max_characters:
+        excerpt = excerpt[:max_characters].rsplit(" ", 1)[0] + "..."
+    return excerpt
 
 
 def load_guideline():
@@ -59,6 +87,9 @@ def load_guideline():
 
 
 def answer_question(question):
+    if needs_medication_safety_response(question):
+        return {"reply": MEDICATION_SAFETY_MESSAGE, "sources": []}
+
     load_guideline()
     query_vector = vectorizer.transform([question])
     scores = cosine_similarity(query_vector, tfidf_matrix).ravel()
@@ -72,7 +103,7 @@ def answer_question(question):
 
     page = document_pages[best_index]
     return {
-        "reply": f"Based on the clinical guideline:\n\n{documents[best_index]}",
+        "reply": f"Based on the clinical guideline:\n\n{concise_excerpt(documents[best_index])}",
         "sources": [f"NICE Guideline - Page {page}"],
     }
 
