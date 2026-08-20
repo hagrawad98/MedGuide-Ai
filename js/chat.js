@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // =====================================================
 
   const API_URL = window.MEDGUIDE_API_URL
-    || "http://127.0.0.1:8000/api/chat";
+    || "https://medguide-ai-production-4790.up.railway.app/api/chat";
 
   // =====================================================
 
