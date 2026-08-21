@@ -1399,6 +1399,8 @@ body.dark-mode .chat-input-wrap input::placeholder {
 
   .chat-sidebar-panel {
     order: 2;
+    flex: 0 0 44px;
+    min-height: 44px;
     margin-top: 0;
     display: flex;
     align-items: center;
@@ -1436,10 +1438,13 @@ body.dark-mode .chat-input-wrap input::placeholder {
 
   .chat-main-panel {
     order: 3;
+    flex: 1 1 auto;
+    min-height: 0;
     min-height: calc(100vh - 115px);
   }
 
   .chat-body {
+    min-height: 0;
     padding: 14px 10px 8px;
   }
 
