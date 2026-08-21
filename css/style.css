@@ -1349,7 +1349,7 @@ body.dark-mode .chat-input-wrap input::placeholder {
 @media (max-width: 600px) {
   .chat-page-shell {
     display: grid;
-    grid-template-columns: 88px minmax(0, 1fr);
+    grid-template-columns: 58px minmax(0, 1fr);
   }
 
   .chat-header {
@@ -1401,7 +1401,7 @@ body.dark-mode .chat-input-wrap input::placeholder {
     grid-column: 1;
     grid-row: 1;
     margin-top: 70px;
-    padding: 8px 5px;
+    padding: 8px 3px;
     overflow: hidden;
   }
 
@@ -1409,8 +1409,8 @@ body.dark-mode .chat-input-wrap input::placeholder {
     width: 100%;
     min-height: 38px;
     margin: 0;
-    padding: 0 4px;
-    font-size: 0.68rem;
+    padding: 0 2px;
+    font-size: 0.58rem;
     line-height: 1.15;
   }
 
@@ -1427,8 +1427,8 @@ body.dark-mode .chat-input-wrap input::placeholder {
     width: 100%;
     min-height: 36px;
     margin: 0 !important;
-    padding: 0 4px;
-    font-size: 0.65rem;
+    padding: 0 2px;
+    font-size: 0.56rem;
     line-height: 1.15;
   }
 
@@ -1441,8 +1441,9 @@ body.dark-mode .chat-input-wrap input::placeholder {
   }
 
   .chat-body {
+    width: 100%;
     min-height: 0;
-    padding: 14px 10px 8px;
+    padding: 14px 6px 8px;
   }
 
   .bubble,
