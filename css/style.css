@@ -1400,39 +1400,43 @@ body.dark-mode .chat-input-wrap input::placeholder {
   .chat-sidebar-panel {
     order: 2;
     margin-top: 0;
-    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
     overflow: hidden;
   }
 
   .chat-sidebar-panel > .new-chat-btn {
-    min-height: 40px;
-    margin-bottom: 8px;
+    flex: 1;
+    min-height: 34px;
+    width: auto;
+    margin: 0;
+    padding: 0 12px;
+    font-size: 0.78rem;
   }
 
   .chat-sidebar {
-    display: flex;
-    gap: 8px;
-    overflow-x: auto;
-    padding-bottom: 4px;
+    display: contents;
   }
 
   .chat-item {
-    flex: 0 0 auto;
-    max-width: 220px;
-    font-size: 0.76rem;
+    display: none;
   }
 
   .chat-sidebar #logout-btn {
+    display: inline-flex;
     flex: 0 0 auto;
     width: auto;
-    min-height: 38px;
+    min-height: 34px;
     margin: 0 !important;
-    padding: 0 14px;
+    padding: 0 12px;
+    font-size: 0.75rem;
   }
 
   .chat-main-panel {
     order: 3;
-    min-height: calc(100vh - 150px);
+    min-height: calc(100vh - 115px);
   }
 
   .chat-body {
