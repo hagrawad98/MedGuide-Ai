@@ -1422,6 +1422,7 @@ body.dark-mode .chat-input-wrap input::placeholder {
     padding: 0 2px;
     font-size: 0.58rem;
     line-height: 1.15;
+    margin-bottom: 5px;
   }
 
   .chat-sidebar {
