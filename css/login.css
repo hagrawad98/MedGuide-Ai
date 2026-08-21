@@ -116,4 +116,46 @@ width: 100%;
   font-size: 70px;
   
 }
+
+@media (max-width: 449px) {
+  .container {
+    width: 100%;
+    padding: 0 18px;
+  }
+
+  .form {
+    padding: 0 4px;
+  }
+
+  .bi-person-circle {
+    top: 20px;
+    font-size: 58px;
+  }
+
+  h4 {
+    margin-top: 68px;
+    font-size: 1.1rem;
+  }
+
+  .form input,
+  .btn,
+  .alert {
+    width: 100%;
+  }
+
+  .form input {
+    min-height: 48px;
+    padding-block: 18px;
+  }
+
+  .btn {
+    min-height: 46px;
+  }
+
+  footer {
+    margin-top: 18%;
+    padding: 16px 18px;
+    font-size: 13px;
+  }
+}
 }
